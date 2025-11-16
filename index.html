@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISUO 电子科技</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        img { max-width: 100%; border-radius: 8px; }
+        .section { padding: 60px 0; }
+        .section-title { 
+            font-size: clamp(1.8rem, 4vw, 2.5rem); 
+            text-align: center; margin-bottom: 40px; 
+            font-weight: 800; color: #0066cc;
+        }
+
+        /* 导航栏（固定+响应式） */
+        nav { 
+            position: sticky; top: 0; z-index: 10;
+            background: #fff; border-bottom: 1px solid #f0f0f0;
+            padding: 16px 0;
+        }
+        .nav-wrap { 
+            display: flex; justify-content: space-between; 
+            align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        .logo { 
+            display: flex; align-items: center; gap: 8px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800;
+            color: #0066cc;
+        }
+        .logo-img { width: 32px; height: 32px; object-fit: contain; }
+        .nav-links { 
+            display: flex; gap: clamp(12px, 3vw, 24px);
+            flex-wrap: wrap;
+        }
+        .nav-links a { 
+            text-decoration: none; color: #555; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #0066cc; }
+        .nav-cta { 
+            padding: 8px 16px; background: #0066cc; 
+            color: #fff; border-radius: 4px;
+            text-decoration: none; font-weight: 500;
+        }
+        .nav-cta:hover { background: #0052a3; }
+
+        /* 产品展示（响应式网格） */
+        .products-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card { 
+            background: #fff; border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden; transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img { 
+            height: 220px; object-fit: cover;
+            width: 100%;
+        }
+        .product-content { padding: 20px; }
+        .product-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .product-desc { color: #666; font-size: 0.95rem; }
+
+        /* 公司简介 */
+        .about { background: #f9fafc; }
+        .about-wrap { 
+            display: grid;
+            grid-template-columns: 1fr; gap: 30px;
+            @media (min-width: 768px) {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .about-text { 
+            display: flex; flex-direction: column; justify-content: center;
+            font-size: 1rem;
+        }
+        .about-text p { margin-bottom: 15px; }
+
+        /* 员工简介 */
+        .team-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 600px; margin: 0 auto;
+        }
+        .team-card { 
+            text-align: center; padding: 20px;
+            background: #fff; border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .team-avatar { 
+            width: 120px; height: 120px; object-fit: cover;
+            border-radius: 50%; margin: 0 auto 15px;
+            border: 3px solid #f0f7ff;
+        }
+        .team-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+        .team-title { color: #666; }
+
+        /* 联系我们 */
+        .contact { 
+            background: #0066cc; color: #fff;
+            text-align: center;
+        }
+        .contact-title { color: #fff; }
+        .contact-desc { 
+            max-width: 600px; margin: 0 auto 20px;
+            font-size: 1.1rem;
+        }
+        .contact-btn { 
+            display: inline-block;
+            padding: 10px 24px; background: #fff;
+            color: #0066cc; border-radius: 4px;
+            text-decoration: none; font-weight: 600;
+            transition: background 0.2s;
+        }
+        .contact-btn:hover { background: #f0f7ff; }
+
+        /* 底部 */
+        footer { 
+            padding: 30px 0; text-align: center;
+            background: #f0f7ff; color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-wrap">
+            <div class="logo">
+                <!-- 图片一：品牌Logo -->
+                <img src="t_20251115_180138_com.larus.nova_edit_250761944746631" alt="AISUO Logo" class="logo-img">
+                <span>AISUO 电子科技</span>
+            </div>
+            <div class="nav-links">
+                <a href="#products">产品中心</a>
+                <a href="#about">公司简介</a>
+                <a href="#team">核心团队</a>
+            </div>
+            <a href="#contact" class="nav-cta">联系我们</a>
+        </div>
+    </nav>
+
+    <!-- 产品展示 -->
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title">核心产品</h2>
+            <div class="products-grid">
+                <!-- 图片二：二折叠手机 -->
+                <div class="product-card">
+                    <img src="1763202096088_edit_252161748103189" alt="二折叠旗舰手机" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">二折叠旗舰手机</h3>
+                        <p class="product-desc">竖向二折设计，内外双屏交互，120Hz柔性OLED屏，五摄矩阵模组，兼顾便携与大屏体验。</p>
+                    </div>
+                </div>
+                <!-- 图片三：普通直屏手机 -->
+                <div class="product-card">
+                    <img src="1763202150360_edit_252154092937565" alt="经典直屏系列" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">经典直屏系列</h3>
+                        <p class="product-desc">渐变玻璃机身，五摄影像系统，高清护眼显示屏，超长续航，满足日常全场景使用需求。</p>
+                    </div>
+                </div>
+                <!-- 图片四：超薄手机 -->
+                <div class="product-card">
+                    <img src="1763202449159_edit_252280190290150" alt="超薄轻量系列" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">超薄轻量系列</h3>
+                        <p class="product-desc">5.2mm极致纤薄，五摄紧凑排布，磨砂质感工艺，握持舒适，兼顾轻薄与性能。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">公司简介</h2>
+            <div class="about-wrap">
+                <div class="about-text">
+                    <p>AISUO是一家专注于智能终端研发的电子科技企业，核心业务聚焦智能手机的设计、生产与销售。</p>
+                    <p>我们秉持“简约、高效、突破”的品牌理念，将前沿技术与人文设计深度融合，为全球用户提供性能强劲、体验流畅的智能设备。</p>
+                    <p>自成立以来，AISUO始终以用户需求为核心，不断探索技术边界，组建了由行业资深专家组成的研发团队，致力于成为细分领域的科技标杆。</p>
+                </div>
+                <div>
+                    <!-- 复用品牌Logo作为公司展示图（可替换为实际公司图） -->
+                    <img src="t_20251115_180138_com.larus.nova_edit_250761944746631" alt="AISUO公司环境">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 员工简介 -->
+    <section class="section" id="team">
+        <div class="container">
+            <h2 class="section-title">核心团队</h2>
+            <div class="team-grid">
+                <!-- CEO：ZZY（复用品牌Logo作为头像） -->
+                <div class="team-card">
+                    <img src="t_20251115_180138_com.larus.nova_edit_250761944746631" alt="ZZY" class="team-avatar">
+                    <h3 class="team-name">ZZY</h3>
+                    <p class="team-title">CEO / 董事长</p>
+                </div>
+                <!-- 图片五：金牌保安头像 -->
+                <div class="team-card">
+                    <img src="Screenshot_20251026_182422_com.smile.gifmaker_edit_254998907670985" alt="尿文少" class="team-avatar">
+                    <h3 class="team-name">尿文少</h3>
+                    <p class="team-title">金牌保安</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title contact-title">联系我们</h2>
+            <p class="contact-desc">如需商务合作、产品咨询或问题反馈，欢迎通过以下方式联系我们</p>
+            <a href="mailto:contact@aisuo-tech.com" class="contact-btn">立即咨询</a>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <p>© 2025 AISUO电子科技 版权所有</p>
+        </div>
+    </footer>
+</body>
+</html>
