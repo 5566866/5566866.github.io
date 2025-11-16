@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISUO 电子科技</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; background: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 60px 0; }
+        .section-title { 
+            font-size: 2rem; text-align: center; margin-bottom: 40px; 
+            font-weight: 800; color: #0066cc;
+        }
+
+        /* 导航栏 */
+        nav { 
+            position: sticky; top: 0; z-index: 10;
+            background: #fff; border-bottom: 1px solid #f0f0f0;
+            padding: 16px 0;
+        }
+        .nav-wrap { 
+            display: flex; justify-content: space-between; 
+            align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        .logo { 
+            display: flex; align-items: center; gap: 8px;
+            font-size: 1.5rem; font-weight: 800; color: #0066cc;
+        }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a { 
+            text-decoration: none; color: #555; font-weight: 500;
+        }
+        .nav-cta { 
+            padding: 8px 16px; background: #0066cc; 
+            color: #fff; border-radius: 4px; text-decoration: none; 
+        }
+
+        /* 产品展示 */
+        .products-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card { 
+            background: #fff; border: 1px solid #f0f0f0; border-radius: 8px;
+            padding: 20px;
+        }
+        .product-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+
+        /* 公司简介 */
+        .about { background: #f9fafc; }
+        .about-wrap { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .about-text p { margin-bottom: 15px; }
+
+        /* 员工简介 */
+        .team-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px; max-width: 600px; margin: 0 auto;
+        }
+        .team-card { 
+            text-align: center; padding: 20px; border: 1px solid #f0f0f0; border-radius: 8px;
+        }
+        .team-name { font-size: 1.1rem; font-weight: 700; }
+
+        /* 联系我们 */
+        .contact { background: #0066cc; color: #fff; text-align: center; }
+        .contact-btn { 
+            display: inline-block; padding: 10px 24px; background: #fff;
+            color: #0066cc; border-radius: 4px; text-decoration: none; font-weight: 600;
+        }
+
+        /* 底部 */
+        footer { padding: 30px 0; text-align: center; background: #f0f7ff; color: #666; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-wrap">
+            <div class="logo">
+                <span>AISUO 电子科技</span>
+            </div>
+            <div class="nav-links">
+                <a href="#products">产品中心</a>
+                <a href="#about">公司简介</a>
+                <a href="#team">核心团队</a>
+            </div>
+            <a href="#contact" class="nav-cta">联系我们</a>
+        </div>
+    </nav>
+
+    <!-- 产品展示 -->
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title">核心产品</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-title">二折叠旗舰手机</h3>
+                    <p>竖向二折设计，内外双屏交互，120Hz柔性OLED屏</p>
+                </div>
+                <div class="product-card">
+                    <h3 class="product-title">经典直屏系列</h3>
+                    <p>渐变玻璃机身，五摄影像系统，高清护眼显示屏</p>
+                </div>
+                <div class="product-card">
+                    <h3 class="product-title">超薄轻量系列</h3>
+                    <p>5.2mm极致纤薄，磨砂质感工艺，握持舒适</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">公司简介</h2>
+            <div class="about-wrap">
+                <div class="about-text">
+                    <p>AISUO是一家专注于智能终端研发的电子科技企业，核心业务聚焦智能手机的设计、生产与销售。</p>
+                    <p>我们秉持“简约、高效、突破”的品牌理念，为全球用户提供性能强劲、体验流畅的智能设备。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 员工简介 -->
+    <section class="section" id="team">
+        <div class="container">
+            <h2 class="section-title">核心团队</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3 class="team-name">ZZY</h3>
+                    <p>CEO / 董事长</p>
+                </div>
+                <div class="team-card">
+                    <h3 class="team-name">尿文少</h3>
+                    <p>金牌保安</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <p>如需商务合作、产品咨询或问题反馈，欢迎联系我们</p>
+            <a href="mailto:contact@aisuo-tech.com" class="contact-btn">立即咨询</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 AISUO电子科技 版权所有</p>
+        </div>
+    </footer>
+</body>
+</html>
