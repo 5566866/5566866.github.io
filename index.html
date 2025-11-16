@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISUO 电子科技 - 高端智能终端</title>
+    <style>
+        /* 全局基础样式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; }
+        .btn { 
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-primary { 
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        .btn-primary:hover { 
+            background: #333333;
+            transform: translateY(-2px);
+        }
+        .btn-outline { 
+            background: transparent;
+            color: #1a1a1a;
+            border: 1px solid #1a1a1a;
+        }
+        .btn-outline:hover { 
+            background: #f5f5f5;
+            transform: translateY(-2px);
+        }
+        .section { padding: 100px 0; }
+        @media (min-width: 768px) { .section { padding: 150px 0; } }
+        .section-title { 
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .section-divider { 
+            width: 60px;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 0 auto 60px;
+        }
+
+        /* 导航栏 */
+        nav { 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .nav-container { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img { 
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .logo-text { 
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .nav-links { 
+            display: flex;
+            gap: clamp(20px, 3vw, 35px);
+        }
+        .nav-links a { 
+            font-size: 14px;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: #1a1a1a; }
+        .menu-btn { 
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                gap: 15px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+        }
+
+        /* 首页Hero区 */
+        .hero { 
+            padding-top: 180px;
+            padding-bottom: 120px;
+            text-align: center;
+        }
+        .hero-logo { 
+            width: clamp(120px, 20vw, 180px);
+            height: clamp(120px, 20vw, 180px);
+            border-radius: 16px;
+            object-fit: cover;
+            margin: 0 auto 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .hero-title { 
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-desc { 
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        .hero-btns { 
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* 产品展示区 */
+        .products { background: #fafafa; }
+        .products-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .product-card { 
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-card-title { 
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .product-card-desc { 
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        /* 公司简介区 */
+        .about { text-align: center; }
+        .about-content { 
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 核心成员区 */
+        .team { background: #fafafa; }
+        .team-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .team-card { 
+            text-align: center;
+        }
+        .team-avatar { 
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: #1a1a1a;
+        }
+        .team-name { 
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+        .team-role { 
+            font-size: 13px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .team-desc { 
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 联系我们区 */
+        .contact { text-align: center; }
+        .contact-desc { 
+            font-size: 15px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* 页脚 */
+        footer { 
+            padding: 60px 0;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="Screenshot_20251115_180138_com.larus.nova_edit_250761944746631.jpg" alt="AISUO Logo" class="logo-img">
+                <span class="logo-text">AISUO</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">首页</a>
+                <a href="#products">产品</a>
+                <a href="#about">公司简介</a>
+                <a href="#team">核心成员</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <div class="menu-btn" id="menuBtn">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero区 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="Screenshot_20251115_180138_com.larus.nova_edit_250761944746631.jpg" alt="AISUO Logo" class="hero-logo">
+            <h1 class="hero-title">AISUO 电子科技</h1>
+            <p class="hero-desc">专注高端智能手机研发，以创新技术重塑智能体验</p>
+            <div class="hero-btns">
+                <a href="https://5566866.github.io/AISUO.github.io/" class="btn btn-primary" target="_blank">探索产品</a>
+                <a href="https://5566866.github.io/AISUOI.github.io/" class="btn btn-outline" target="_blank">联系我们</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示区 -->
+    <section id="products" class="section products">
+        <div class="container">
+            <h2 class="section-title">产品系列</h2>
+            <div class="section-divider"></div>
+            <div class="products-grid">
+                <!-- 二折叠旗舰 -->
+                <div class="product-card">
+                    <h3 class="product-card-title">二折叠旗舰</h3>
+                    <p class="product-card-desc">内外双屏无缝协同，6.8英寸内屏提供沉浸式影音办公体验，4.6英寸外屏支持快捷操作。搭载旗舰级处理器与专业影像系统，兼顾便携性与性能巅峰，重新定义折叠屏手机体验。</p>
+                    <a href="https://5566866.github.io/AISUO.github.io/" class="btn btn-outline" target="_blank">了解详情</a>
+                </div>
+                <!-- 经典直屏 -->
+                <div class="product-card">
+                    <h3 class="product-card-title">经典直屏</h3>
+                    <p class="product-card-desc">6.7英寸2K超清直屏，120Hz高刷新率搭配原色显示技术，色彩精准度行业领先。均衡性能调校，续航持久，配合立体双扬与线性马达，打造旗舰级直屏使用体验。</p>
+                    <a href="https://5566866.github.io/AISUO.github.io/" class="btn btn-outline" target="_blank">了解详情</a>
+                </div>
+                <!-- 超薄轻量 -->
+                <div class="product-card">
+                    <h3 class="product-card-title">超薄轻量</h3>
+                    <p class="product-card-desc">7.1mm极致纤薄机身，160g超轻重量，单手掌控毫无压力。在轻薄形态下，依然保留均衡配置与持久续航，搭配细腻工艺与简约设计，颜值与实用性完美平衡。</p>
+                    <a href="https://5566866.github.io/AISUO.github.io/" class="btn btn-outline" target="_blank">了解详情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司简介区 -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">公司简介</h2>
+            <div class="section-divider"></div>
+            <div class="about-content">
+                <p>AISUO 电子科技是一家专注于高端智能手机研发、生产与销售的创新型科技企业。自成立以来，我们始终秉持“以用户为中心，以技术为核心”的理念，聚集行业顶尖人才，深耕折叠屏、直屏显示、超薄机身等核心技术领域。</p>
+                <p>我们致力于通过技术创新，为全球用户提供兼具极致性能、卓越设计与人性化体验的智能终端产品，打造属于AISUO的高端科技品牌形象。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心成员区 -->
+    <section id="team" class="section team">
+        <div class="container">
+            <h2 class="section-title">核心成员</h2>
+            <div class="section-divider"></div>
+            <div class="team-grid">
+                <!-- CEO: ZZY -->
+                <div class="team-card">
+                    <div class="team-avatar">Z</div>
+                    <h3 class="team-name">ZZY</h3>
+                    <p class="team-role">CEO</p>
+                    <p class="team-desc">拥有10年以上科技行业管理经验，曾任职于知名手机品牌核心研发团队，具备敏锐的行业洞察力与战略布局能力，引领AISUO走向高端科技赛道。</p>
+                </div>
+                <!-- 金牌保安: 尿文少 -->
+                <div class="team-card">
+                    <div class="team-avatar">N</div>
+                    <h3 class="team-name">尿文少</h3>
+                    <p class="team-role">金牌保安</p>
+                    <p class="team-desc">负责公司安全保障工作，以高度的责任心与专业素养，守护公司财产与员工安全，是AISUO团队不可或缺的安全屏障，用行动诠释“金牌”服务理念。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们区 -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="section-divider"></div>
+            <p class="contact-desc">如果您对我们的产品或服务有任何疑问，欢迎通过以下方式联系我们，我们将竭诚为您服务。</p>
+            <a href="https://5566866.github.io/AISUOI.github.io/" class="btn btn-primary" target="_blank">立即联系</a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2025 AISUO 电子科技 版权所有</p>
+        </div>
+    </footer>
+
+    <!-- 移动端菜单脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 点击导航链接关闭菜单
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
